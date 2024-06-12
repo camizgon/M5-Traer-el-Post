@@ -27,7 +27,6 @@ async function getPosts() {
 // Función para mostrar los posts en el HTML
 function displayPosts(posts) {
   const postContainer = document.getElementById("post-data");
-  
 
   let postsHTML = "";
   posts.forEach((post) => {
@@ -41,3 +40,15 @@ function displayPosts(posts) {
 
   postContainer.innerHTML = postsHTML;
 }
+
+// Código para cargar la imagen de Darth Vader
+const image = document.querySelector(".my-image");
+fetch("./assets/img/darthVader.jpg")
+  .then((response) => response.blob())
+  .then((blob) => {
+    const objectURL = URL.createObjectURL(blob);
+    image.src = objectURL;
+  })
+  .catch((error) => {
+    console.error("Hubo un problema al cargar la imagen:", error);
+  });
